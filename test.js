@@ -1,3 +1,6 @@
+
+
+const calculator = require("./calculator")
 // console.log("Hello Node")
 
 // function sayHello(){
@@ -5,5 +8,7 @@
 // }
 // sayHello()
 
-let name = "Raj";
-console.log(global);
+// let name = "Raj";
+// console.log(global.name);
+
+calculator.addition(3,5)
