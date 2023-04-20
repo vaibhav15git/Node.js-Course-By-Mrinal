@@ -49,13 +49,28 @@ app.post("/users", (req, res) => {
 //------------------------------------------------------------------------------------
 // put or update request
 app.put("/users/:name", (req, res) => {
-
- let user = users.find((user) => user.name === req.params.name);
+  let user = users.find((user) => user.name === req.params.name);
 
   if (!user) return res.status(404).send("User not found");
 
-  user.name = req.body.name
+  user.name = req.body.name;
   res.send(user);
+});
+//------------------------------------------------------------------------------------
+// delete request
+//1.Not recommended
+app.delete("/users/:name", (req, res) => {
+  let UpdateName = users.filter((user) => user.name !== req.params.name);
+
+  users = UpdateName;
+  res.send(users);
+});
+
+//2 Recommended
+
+app.delete("/users/:id", (req, res) => {
+
+  
 });
 
 //------------------------------------------------------------------------------------
