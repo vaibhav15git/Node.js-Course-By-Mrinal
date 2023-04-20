@@ -69,10 +69,11 @@ app.delete("/users/:name", (req, res) => {
 //2 Recommended
 
 app.delete("/users/:id", (req, res) => {
-
-   let user = users.find(user => user.id === req.params.id);
-    if (!user) return res.status(404).send("User not found");
-
+  let user = users.find((user) => user.id === req.params.id);
+  if (!user) return res.status(404).send("User not found");
+  const index = users.indexOf(user);
+  users.splice(index, 1);
+  res.send(user);
 });
 
 //------------------------------------------------------------------------------------
