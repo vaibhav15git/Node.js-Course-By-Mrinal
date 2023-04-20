@@ -32,7 +32,7 @@ const users = [
 //   res.send(req.params.id);
 // });
 //------------------------------------------------------------------------------------
-//for post request
+//for post or create request
 app.get("/users", (req, res) => {
   res.send(users);
 });
@@ -46,6 +46,18 @@ app.post("/users", (req, res) => {
   users.push(user);
   res.send(user);
 });
+//------------------------------------------------------------------------------------
+// put or update request
+app.put("/users/:name", (req, res) => {
+
+ let user = users.find((user) => user.name === req.params.name);
+
+  if (!user) return res.status(404).send("User not found");
+
+  user.name = req.body.name
+  res.send(user);
+});
+
 //------------------------------------------------------------------------------------
 // serach by id
 app.get("/users/:id", (req, res) => {
