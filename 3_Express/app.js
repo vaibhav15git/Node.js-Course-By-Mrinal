@@ -59,17 +59,17 @@ app.put("/users/:name", (req, res) => {
 //------------------------------------------------------------------------------------
 // delete request
 //1.Not recommended
-app.delete("/users/:name", (req, res) => {
-  let UpdateName = users.filter((user) => user.name !== req.params.name);
+// app.delete("/users/:name", (req, res) => {
+//   let UpdateName = users.filter((user) => user.name !== req.params.name);
 
-  users = UpdateName;
-  res.send(users);
-});
+//   users = UpdateName;
+//   res.send(users);
+// });
 
 //2 Recommended
 
 app.delete("/users/:id", (req, res) => {
-  let user = users.find((user) => user.id === req.params.id);
+  let user = users.find((user) => user.id === parseInt(req.params.id));
   if (!user) return res.status(404).send("User not found");
   const index = users.indexOf(user);
   users.splice(index, 1);
