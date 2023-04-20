@@ -70,7 +70,9 @@ app.delete("/users/:name", (req, res) => {
 
 app.delete("/users/:id", (req, res) => {
 
-  
+   let user = users.find(user => user.id === req.params.id);
+    if (!user) return res.status(404).send("User not found");
+
 });
 
 //------------------------------------------------------------------------------------
